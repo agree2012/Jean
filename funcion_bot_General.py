@@ -19,7 +19,6 @@ import funcion_bot_General
 import select_date_time
 from select_date_time import weekday_today
 from onetime_remind import count_day
-import secinfo
 import verify
 import onetime_remind
 import select_date_time
