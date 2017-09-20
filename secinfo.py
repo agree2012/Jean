@@ -1,5 +1,4 @@
-API_Token='xoxb-238149745300-GwaFivki8iH8N82RyyL0HKof'
-#API_Token='xoxb-208084154562-XiCA4zkATTu2ifG2DsQrZPlc'
+API_Token='xoxb-238149745300-HDo52NAaIUyNcj0kwLqcxuYz'
 username='m.korostelev'
 passowrd='654123Misha'
 channel_id = 'D715E0CB1'
