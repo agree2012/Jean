@@ -270,9 +270,9 @@ def format_date(string):
         time_replace = time[0] + ':'
         time_null = str(int(time[0])+12) + ':'
         string = string.replace(time_replace, time_null)
-        string = string.replace('p.m.', '')
+        string = string.replace(' p.m.', '')
     if 'a.m.' in string:
-        string = string.replace('a.m.', '')
+        string = string.replace(' a.m.', '')
     if 'at' in string:
         date_event = ''
         string = string.replace('at', date_event)
@@ -328,7 +328,8 @@ def list_of_reminds():
             file2 = open('/home/sonarqube/final_bot/remindlist.txt').readlines()
             for i in range(0,len(file2)):
                 text = find_quotes(file2[i])
-                sc.api_call('chat.postMessage', as_user='true:', channel=chan, text= text)
+		if text != '' :
+                    sc.api_call('chat.postMessage', as_user='true:', channel=chan, text= text)
 
 def write_remindlist():
     text = ''
