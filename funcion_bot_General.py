@@ -251,7 +251,7 @@ def command_yes(job):
             number = 2
             return number
         elif 'no' in data :
-            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Okay, then i end work')
+            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Okay, then i finish work')
             number = 2
             clear_text()
             return number
