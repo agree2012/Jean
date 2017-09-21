@@ -28,7 +28,7 @@ def selection_word(text,start,end):
 
 def selection_username(i):
     try:
-        text = open('/home/sonarqube/final_bot/remindlist.txt').readlines()
+        text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
         text_string = text[i]
         if (len(text_string) != 1) and (len(text_string) != 2):
             start_Name = text_string.find('@') + 1
@@ -49,7 +49,7 @@ def selection_username(i):
 
 def selection_eventname(i):
     try:
-        text = open('/home/sonarqube/final_bot/remindlist.txt').readlines()
+        text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
         text_string = text[i]
         if (len(text_string) != 1) and (len(text_string) != 2):
             start_event = text_string.find('"')
@@ -67,7 +67,7 @@ def selection_eventname(i):
 
 def selection_timename(i):
     try:
-        text = open('/home/sonarqube/final_bot/remindlist.txt').readlines()
+        text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
         text_string = text[i]
         if len(text_string) > 2:
             time_start = text_string.find('at') + 3
