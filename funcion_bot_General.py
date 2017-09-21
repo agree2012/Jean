@@ -119,7 +119,7 @@ def site_and_job(text):
 
 def connect(file):
     f = open(file, 'a')
-    userlist = open('/home/sonarqube/final_bot/userslist.txt').readlines()
+    userlist = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/userslist.txt').readlines()
     sc.rtm_connect()
     input= sc.rtm_read()
     if input:
@@ -324,7 +324,7 @@ def list_of_reminds():
         if 'jean list' in file1[i]:
             text = file1[i]
             clear_text()
-            file2 = open('/home/sonarqube/final_bot/remindlist.txt').readlines()
+            file2 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
             for i in range(0,len(file2)):
                 text = find_quotes(file2[i])
 		if text != '' :
@@ -334,9 +334,9 @@ def write_remindlist():
     text = ''
     send = ''
     job = ''
-    file3 = open('/home/sonarqube/final_bot/remindlist.txt').read()
-    file1 = open('/home/sonarqube/final_bot/lol.txt').readlines()
-    file2 = open('/home/sonarqube/final_bot/remindlist.txt','a')
+    file3 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').read()
+    file1 = open('lol.txt').readlines()
+    file2 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt','a')
     for i in range(0,len(file1)):
         try :
             if ' remind' in file1[i]:
@@ -396,8 +396,8 @@ def delete_remind():
     number = 0
     send = 'Sorry, i don`t remind you at that time'
     job = ''
-    file1 = open('/home/sonarqube/final_bot/lol.txt').readlines()
-    file2 = open('/home/sonarqube/final_bot/remindlist.txt').readlines()
+    file1 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
+    file2 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
     clear_text()
     for i in range(0,len(file1)):
         if 'stop_remind' in file1[i]:
@@ -416,7 +416,7 @@ def delete_remind():
                 job = noformat_job+format_job
             for i in range(0,len(file2)):
                 if job in file2[i]:
-                    file3 = open('/home/sonarqube/final_bot/remindlist.txt','w')
+                    file3 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt','w')
                     send = 'Okay, i stop to remind you about this'
                     text = file2[i]
                     text = text.replace(job, '')

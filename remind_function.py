@@ -61,7 +61,7 @@ def clear_shedule():
 
 def refresh_remind():
     clear_shedule()
-    text = open('/home/sonarqube/final_bot/remindlist.txt').readlines()
+    text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
     for i in range(0,len(text)):
         if (len(text[i]) != 1) and (len(text[i]) != 2):
             everyday_remind.every_remind(i)
@@ -78,7 +78,7 @@ def datetime_now():
     return date_now, time_now
 
 def delete_last_remind():
-    f = open('/home/sonarqube/final_bot/remindlist.txt').readlines()
+    f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
     for i in range(0,len(f)):
         if not 'every' in f[i]:
             if (len(f[i])!= 1) and (len(f[i])!=2):
@@ -94,12 +94,12 @@ def delete_last_remind():
                 elif (datetime_now()[1][1] > int_time(i)[1]) and (datetime_now()[1][0] == int_time(i)[0]) and (datetime_now()[0][2] == int_date(i)[2])\
                     and (datetime_now()[0][1] == int_date(i)[1]) and (datetime_now()[0][0] == int_date(i)[0]):
                     f[i] = ''+'\n'
-    fw = open('/home/sonarqube/final_bot/remindlist.txt','w')
+    fw = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt','w')
     fw = fw.writelines(f)
 
 def remind_new():
     delete_last_remind()
-    f = open('/home/sonarqube/final_bot/remindlist.txt').readlines()
+    f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
     for i in range(0,len(f)):
         if  not 'every' in f[i]:
             if len(f[i]) > 2:
