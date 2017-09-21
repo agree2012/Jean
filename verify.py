@@ -25,7 +25,7 @@ def verify_word(text,start,end):
 
 def verify_username(i):
     try:
-        text = open('/home/sonarqube/final_bot/lol.txt').readlines()
+        text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
         text_string = text[i]
         if len(text_string) > 2:
             start_Name = text_string.find('@') + 1
@@ -47,7 +47,7 @@ def verify_username(i):
 
 def verify_eventname(i):
     try:
-        text = open('/home/sonarqube/final_bot/lol.txt').readlines()
+        text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
         text_string = text[i]
         if len(text_string) > 2:
             start_event = text_string.find('"')
@@ -65,7 +65,7 @@ def verify_eventname(i):
 
 def verify_timename(i):
     try:
-        text = open('/home/sonarqube/final_bot/lol.txt').readlines()
+        text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
         text_string = text[i]
         if len(text_string) > 2:
             time_start = text_string.find('at') + 3
