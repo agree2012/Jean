@@ -33,12 +33,13 @@ def remind_event_and_name(i):
 def event_sched_print(event):
     event = int(event)
     if(selection_username(event) != 'Void') and (selection_eventname(event) != 'Void'):
-            if '@' in selection_username(event) :
+            if 'channel' in selection_username(event) :
+                text = '<!channel>, you asked to remind about ' +  selection_eventname(event)
+            elif '@' in selection_username(event) :
                 text = '<' + selection_username(event) + '>, you asked to remind about ' +  selection_eventname(event)
-                sc.api_call('chat.postMessage', as_user='true:', channel=chan, text=(text))
             else :
                 text = selection_username(event) + ', you asked to remind about ' +  selection_eventname(event)
-                sc.api_call('chat.postMessage', as_user='true:', channel=chan, text=(text))
+        sc.api_call('chat.postMessage', as_user='true:', channel=chan, text=(text))
 
 
 
