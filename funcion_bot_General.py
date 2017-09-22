@@ -134,7 +134,7 @@ def connect(file):
                             if '@me' in report:
                                 report = report.replace('@me','<@'+ username + '>')
 			    if ('@all' in report) :
-				report = report.replace('@all','<!channel>')
+				report = report.replace('@all','<@!channel>')
                             f.write(report.encode('utf-8') + '\n')
                             f.close
                             return report
