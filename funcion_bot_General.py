@@ -382,7 +382,9 @@ def write_remindlist():
                         (verify.verify_eventname(i) == 'Void') or (verify.verify_time_and_date(i) == 'Void'):
                         sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Incorrect data')
                     else :
-                        if '@' in verify.verify_username(i) :
+			if 'channel' in verify.verify_username(i) :
+			    send = 'Okay, i will remind '+ '<!channel>'
+                        elif '@' in verify.verify_username(i) :
                             send = 'Okay, i will remind '+ '<' + verify.verify_username(i) + '>'
                         else :
                             send = 'Okay, i will remind '+ verify.verify_username(i)
