@@ -123,7 +123,6 @@ def connect(file):
     sc.rtm_connect()
     input= sc.rtm_read()
     if input:
-        print(input)
         for action in input:
             for i in range(0,len(userlist)):
                 if 'user' in action:
@@ -209,7 +208,6 @@ def eye_on_server():
             else :
                 sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Ok, i will keep an eye on it')
                 while(ping_the_server(site_and_job(job)[0]) != 'server is down!'):
-                    print('it start now')
                     for i in range(0,600):
                         file2 = open('stop.txt').read()
                         if(file2 != ''):
