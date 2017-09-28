@@ -105,17 +105,20 @@ def str_time(i):
     return string
 
 def _date_start(i,format_time):
-    Date_time = selection_timename(i)
-    time  = re.findall('(\d+)', Date_time)
-    time = [time[0],':' + time[1]]
-    if format_time == 1:
-        date_start = Date_time.find(time[format_time]) + 4
-    else:
-        date_start = Date_time.find(time[format_time]) + 3
-    date_end = len(Date_time)
-    datename = selection_word(Date_time,date_start,date_end)
-    return datename
-
+    try:
+        Date_time = selection_timename(i)
+        time  = re.findall('(\d+)', Date_time)
+        time = [time[0],':' + time[1]]
+        if format_time == 1:
+            date_start = Date_time.find(time[format_time]) + 4
+        else:
+            date_start = Date_time.find(time[format_time]) + 3
+        date_end = len(Date_time)
+        datename = selection_word(Date_time,date_start,date_end)
+        return datename
+    expect IndexError:
+	datename = '1.07.2017'
+	return datename
 
 def str_date(i):
     try:
