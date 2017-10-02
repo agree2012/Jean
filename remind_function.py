@@ -22,16 +22,6 @@ token = secinfo.API_Token
 sc = SlackClient(token)
 s = sched.scheduler(time.time, time.sleep)
 
-
-def remind_event_and_name(i):
-    chan = selection_chan(i)
-    print(chan)
-    name_user = selection_username(i)
-    event = selection_eventname(i)
-    if (name_user != 'Void') and (event != 'Void'):
-        sc.api_call('chat.postMessage', as_user='true:', channel=chan, \
-                text=('<@' + name_user + ', you asked to remind about ' +  event))
-
 def event_sched_print(event):
     event = int(event)
     print(selection_chan(event))
