@@ -351,34 +351,27 @@ def write_remindlist():
             if ' remind' in file1[i]:
                 text = file1[i]
                 job = funcion_bot_General.job(text)
+		number_start = job.find('at') + 3
+                number_end = len(job)
+                noformat_job = job[0:number_start]
+                format_job = job[number_start:number_end]
                 if  not ':' in job:
-                    number_start = job.find('at') + 3
-                    number_end = len(job)
-                    noformat_job = job[0:number_start]
-                    format_job = job[number_start:number_end]
                     time  = re.findall('(\d+)', format_job)
                     time_replace = time[0] + ':' + '00'
                     format_job = format_job.replace(time[0], time_replace)
                     job = noformat_job+format_job
                 if ('every' in job):
-                    if 'p.m.' in job:
-                        number_start = job.find('at') + 3
-                        number_end = len(job)
-                        noformat_job = job[0:number_start]
-                        format_job = job[number_start:number_end]
+                    if 'p.m.' in job :
                         time  = re.findall('(\d+)', format_job)
                         time_replace = time[0] + ':'
                         time_null = str(int(time[0])+12) + ':'
                         format_job = format_job.replace(time_replace, time_null)
                         format_job = format_job.replace('p.m.', '')
-                        job = '@' + noformat_job+format_job
+                        job = noformat_job+format_job
                     if 'a.m.' in job:
                         job = job.replace('a.m.', '')
+		    job = '@' + job
                 else:
-                    number_start = job.find('at') + 3
-                    number_end = len(job)
-                    noformat_job = job[0:number_start]
-                    format_job = job[number_start:number_end]
                     format_job = format_date(format_job)
                     job = '@' + noformat_job+format_job
                 if job in file3:
