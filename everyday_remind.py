@@ -38,8 +38,8 @@ def every_remind(i):
     day = ''
     if 'every' in days_event:
         if 'day' in days_event:
-            schedule.every().day.at(str_time(i)).do(remind_function.event_sched_print, i)
+            schedule.every().day.at(str_time(i)).do(event_sched_print.event_sched_print, i)
         else:
             for j in range(0,7):
                 if day_of_week[j] in days_event:
-                    every_day_of_week(j,str_time(i),remind_function.event_sched_print,i)
+                    every_day_of_week(j,str_time(i),event_sched_print.event_sched_print,i)
