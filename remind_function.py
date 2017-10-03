@@ -41,7 +41,7 @@ def clear_shedule():
 
 def refresh_remind():
     clear_shedule()
-    text = open('remindlist.txt').readlines()
+    text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
     for i in range(0,len(text)):
         if (len(text[i]) != 1) and (len(text[i]) != 2):
             everyday_remind.every_remind(i)
