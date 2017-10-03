@@ -9,7 +9,7 @@ import datetime
 import ast
 import sys
 from select_date_time import str_date, str_time
-import remind_function
+from remind_function import event_sched_print
 import secinfo
 import  select_date_time
 token = secinfo.API_Token
