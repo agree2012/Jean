@@ -371,7 +371,7 @@ def write_remindlist():
                         time_null = str(int(time[0])+12) + ':'
                         format_job = format_job.replace(time_replace, time_null)
                         format_job = format_job.replace('p.m.', '')
-                        job = noformat_job+format_job
+                        job = '@' + noformat_job+format_job
                     if 'a.m.' in job:
                         job = job.replace('a.m.', '')
                 else:
