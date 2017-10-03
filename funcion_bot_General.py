@@ -125,7 +125,6 @@ def site_and_job(text):
 
 def connect(file):
     f = open(file, 'a')
-    userlist = open('userslist.txt').readlines()
     sc.rtm_connect()
     input= sc.rtm_read()
     if input:
