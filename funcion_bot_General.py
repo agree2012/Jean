@@ -129,22 +129,21 @@ def connect(file):
     input= sc.rtm_read()
     if input:
         for action in input:
-            for i in range(0,len(userlist)):
-                if 'user' in action:
-                    if action['user'] != 'U704DMX8U':
-                        if 'type' in action and action['type'] == "message" :
-                            username = action['user']
-                            report = action['text']
-                            channel = action['channel']
-                            report = str(channel) + ' ' + report
-                            if '@me' in report:
-                                report = report.replace('@me','<@'+ username + '>')
-                            if ('@all' in report):
-                                report = report.replace('@all','<!@channel>')
-                            f.write(report + '\n')
-                            #f.write(report.encode('utf-8') + '\n')
-                            f.close
-                            return report
+	    if 'user' in action:
+                if action['user'] != 'U704DMX8U':
+                    if 'type' in action and action['type'] == "message" :
+                        username = action['user']
+                        report = action['text']
+                        channel = action['channel']
+                        report = str(channel) + ' ' + report
+                        if '@me' in report:
+                            report = report.replace('@me','<@'+ username + '>')
+                        if ('@all' in report):
+                            report = report.replace('@all','<!@channel>')
+                        f.write(report + '\n')
+                        #f.write(report.encode('utf-8') + '\n')
+                        f.close
+                        return report
 
 def clear_text():
         f=open('lol.txt', 'w')
