@@ -90,6 +90,9 @@ def remind_new():
         else:
             refresh_remind()
             shed_date_final()
+            jean_ask.shedule_write()
+            jean_ask.shedule_clear_dolist()
+            jean_ask.ask_about_work()
             #sc.api_call('chat.postMessage', as_user='true:', channel=define_chan, text=('Incorrect time'))
 
 def shed_date_final():
