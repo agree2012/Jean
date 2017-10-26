@@ -47,13 +47,6 @@ def check_hi():
          while(what_you_do() != 1):
              what_you_do()
 
-def what_you_do():
-    word2 = 'today i do'
-    data = open('2.txt').read()
-    if word2 in data:
-        print('lol')
-        return 1
-
 def connect(file):
     f = open(file, 'a')
     userlist = open('userslist.txt').readlines()
@@ -78,7 +71,6 @@ def connect(file):
                             f.close
 
 def connecting():
-    #connect('lol.txt')
     text = open('lol.txt').read()
     return text
 
