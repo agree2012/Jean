@@ -166,7 +166,7 @@ def threading_start():
 
 
 def ask_about_work():
-    schedule.every().day.at("9:54").do(threading_start)
+    schedule.every().day.at("10:44").do(threading_start)
 
 
 def clear_dolist():
@@ -174,7 +174,7 @@ def clear_dolist():
     f.close()
 
 def shedule_clear_dolist():
-    schedule.every().day.at("10:02").do(clear_dolist)
+    schedule.every().day.at("12:30").do(clear_dolist)
 
 def call_about_results(request,chan):
     request = request['spreadsheetId']
@@ -188,4 +188,4 @@ def write_in_form():
     call_about_results(request,'D63CABG6L')
 
 def shedule_write():
-    schedule.every().day.at("10:00").do(write_in_form)
+    schedule.every().day.at("12:20").do(write_in_form)
