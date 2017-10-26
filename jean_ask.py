@@ -86,11 +86,13 @@ def dialog(chan):
     num = 0
     text = connecting()
     while(num == 0):
-        sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='You have a time to talk about god?')
+        sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='You are ready to answer on a few question about your work? \n\
+Write: `Yes i ready`, when you will be ready')
         num = 1
     while(num == 1):
         if (('Yes i ready' in text) and (define_chan() == chan) and (num == 1)):
-            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='What you do today?')
+            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='What did you do today? \n\
+Write:`Today i` + `things which you do today`')
             funcion_bot_General.clear_text()
             num = 2
         else :
@@ -99,7 +101,8 @@ def dialog(chan):
         text = connecting()
         if('Today i ' in text) and (num == 2)  and (define_chan() == chan):
             i_do = text
-            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='What you plain do tommorow')
+            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='What are you going to do tommorow? \n\
+Write:`Tommorow i` + `things which you going to do tommorow`')
             funcion_bot_General.clear_text()
             num =3
         else :
@@ -107,14 +110,16 @@ def dialog(chan):
     while(num == 3):
         if('Tommorow i ' in text) and (num == 3)  and (define_chan() == chan):
             i_will_be_do = text
-            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Which more information you want to retrive')
+            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='What are the wishes or additions? \n\
+Write: `In more information` + `your text` \n\
+Write `Not more information` if you want not write')
             funcion_bot_General.clear_text()
             num = 4
         else :
             text = connecting()
     while(num == 4):
         text = connecting()
-        if('Anything i' in text) and (num == 4) and (define_chan() == chan):
+        if(('more information' in text) and (num == 4) and (define_chan() == chan)):
             anyting = text
             sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Okay thank you')
             funcion_bot_General.clear_text()
@@ -129,7 +134,7 @@ def dialog(chan):
 
 def request_work(chan):
     while(dialog(chan) != 1):
-        a=1
+        dialog(chan)
 
 def delete_user_ask(chan):
     fr=open('do_list.txt').readlines()
@@ -154,16 +159,14 @@ def change_my_answer(chan):
     else:
         sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Sorry but result already send')
 
+def threading_start():
+    for i in range(0, len(secinfo.channel_list)):
+        t5 = threading.Thread(target=request_work, args=(secinfo.channel_list[i],))
+        t5.start()
+
 
 def ask_about_work():
-    time_now = str(datetime.datetime.now().time())
-    time_now = time_now[0:8]
-    (hour_now, minute_now, seconds_now) = time_now.split(':')
-    time_now = [int(hour_now), int(minute_now), int(seconds_now)]
-    if(((int(hour_now)) == 12) and ((int(minute_now)) == 50) and ((int(seconds_now))==0)):
-        for i in range(0,len(secinfo.channel_list)):
-            t1 = threading.Thread(target=request_work, args=(secinfo.channel_list[i],))
-            t1.start()
+    schedule.every().day.at("9:54").do(threading_start)
 
 
 def clear_dolist():
@@ -171,7 +174,7 @@ def clear_dolist():
     f.close()
 
 def shedule_clear_dolist():
-    schedule.every().day.at("11:14").do(clear_dolist)
+    schedule.every().day.at("10:02").do(clear_dolist)
 
 def call_about_results(request,chan):
     request = request['spreadsheetId']
@@ -185,4 +188,4 @@ def write_in_form():
     call_about_results(request,'D63CABG6L')
 
 def shedule_write():
-    schedule.every().day.at("12:22").do(write_in_form)
+    schedule.every().day.at("10:00").do(write_in_form)
