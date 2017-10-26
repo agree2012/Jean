@@ -145,7 +145,7 @@ def change_my_answer(chan):
     time_now = time_now[0:8]
     (hour_now, minute_now, seconds_now) = time_now.split(':')
     time_now = [int(hour_now), int(minute_now), int(seconds_now)]
-    if ((int(hour_now)) > 8) and ((int(hour_now)) < 11):
+    if ((int(hour_now)) > 8) and ((int(hour_now)) < 13):
         delete_user_ask(chan)
         request_work(chan)
     else:
@@ -166,7 +166,7 @@ def clear_dolist():
     f.close()
 
 def shedule_clear_dolist():
-    schedule.every().day.at("12:30").do(clear_dolist)
+    schedule.every().day.at("13:10").do(clear_dolist)
 
 def call_about_results(request,chan):
     request = request['spreadsheetId']
@@ -180,4 +180,4 @@ def write_in_form():
     call_about_results(request,secinfo.channel_list[0])
 
 def shedule_write():
-    schedule.every().day.at("12:20").do(write_in_form)
+    schedule.every().day.at("13:00").do(write_in_form)
