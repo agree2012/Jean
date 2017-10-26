@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "robust-root-182706",
+  "private_key_id": "b47c81f96c6e495c14f3d3e83472db9a3ae11b12",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDMHN007Ogh42EP\nOuNyrhkOiJcVhVGrc9GDI/xCfctnoYN5HFOUp40DKsx6/bxsf/ro83v6eVvAotKJ\ncxQiEc51Qi7Iv9OoHcewe9QkP7rIlpXI1ALZCa3MLuHcLyD6ZHW59O0o4hREizC1\nuuDc/aJ2q+vcaToO/XIVB05g96yFeAdyPU2Hgm0jncmWf1TURRfORwhKBSI5p2YU\ns5+ZCE8JZbQ7FY2CFDovqeRq/W4m9+87A7nG9NardrP+qRmacR03qz0gXYedrXFP\nkqt3wZXsMAeOg5DTjRx9rrH1hMTThJmx6m3NvCe/VdM8LBHdyscvYwdbbu0/b+fR\nSSW+kMEPAgMBAAECggEAG8OPWVwiRT3LHYm6l4ZT9TSiLHS6g7JY3Ng/v4Gh8eI3\n4nj2a4GQ/k3Li61I/I85/4bjJdJtJxpevgCPzASVC0Ep4Peq4DLQz1JArH+YtiE5\nlZw1GPWmlOAJq+wjNbwFgXpt6gI6lIpEYWvem2DKwQ6oog4ULibOZkrcn/cAmhTX\nwloZND2K/1fcRotMP57dod01soAZawlzO08AJKhqZPXdm4c0OVN9WFP7ujiaO0fX\nkm3re/LsTj8puTjhwFFiOKKqPh/N8OcnDzkky0Iuzm/DAbjT4mvW3mafcwk1u21Y\nSkeZLteM935gJAI1/7Brqsp/ptQZC1jnkZ4UoNmryQKBgQD1aEgNiiCbpJpMwLEB\nT5VSPn2qcWTK4nSx0jINWKC4mXl1cqBoIrji1SRqTWYjcxtlHvYAj2sJniR0/cZy\nA3ol78+PYZYDr6vyqoX0ldfFc2Tq7aKz6I4g0v/sW28Q+QIP39wMMayCYGgMsRIx\ndowOjjEA0Evrs03QWtckoeuQuQKBgQDU7EhmMDgK0a4qTfT0+BVowVe+t8Po6zmW\nrG/7vWi/yyoZq0Wcl2DHOhcWFmb2RvapfWBq1kLgXAlDFajGmT5tfqdnBUsRNnFD\na0AWzQlbv0N7Wk96kYy5HzezN+GsbRv7mEBkuiZsnCE7p9nv+I6Aezn3r/HyPh/L\n8zQC1kAsBwKBgQCRRDtymFMZDuSvjli41+0iFA+7Nwhc+JPvNued8tqgq2i0VzgQ\nrI0Y6OZ3bn2Jene68grY5gyMUuptvlMb5mcF0eDhlPiCEhkMulg1IgXpwZb5YdWv\n/Xc0gvIvbShfuaa40uCk7zqYqoytBpwoX24kp5LmUma+jRMAxOUZsCeLMQKBgQCr\nQYDZ8F6jFRNoo1sqzX8qypewpk3Ewa2IKxnG+QmPefFaxA8xa/BDTc3TziDyZRFw\nMY+jXsJbgqtQcdNWKVu05fHvQqqmJYvkFhduP2wPhz7XsEPM6dSt8RXz6DZzYS7o\npgTk/3R4VvvD57W69choPrTZK4MGvEEG4Y4r2fezcQKBgAciqH32tU0st1CNYiGj\n8EVjsfzPnZaWZsuaZn6mi5hPU9qc3bRnckmOMJirTeCbAWTHy5xJ+nKpF0QPMTb9\ntWC6IX7MXid35rFKyipgLDWWyW1f7o+6bQPDUcvyQ/IMCahQeYYmTK9UXtW+L4ij\nLDsFgCyUw63iYr4jkCSmxde/\n-----END PRIVATE KEY-----\n",
+  "client_email": "test-gdoc-and-slack@robust-root-182706.iam.gserviceaccount.com",
+  "client_id": "105633425003944530820",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://accounts.google.com/o/oauth2/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/test-gdoc-and-slack%40robust-root-182706.iam.gserviceaccount.com"
+}
