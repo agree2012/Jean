@@ -158,7 +158,7 @@ def threading_start():
 
 
 def ask_about_work():
-    schedule.every().day.at("11:55").do(threading_start)
+    schedule.every().day.at("12:05").do(threading_start)
 
 
 def clear_dolist():
@@ -177,7 +177,7 @@ def write_in_form():
     request = trainToGoogleDoc.create_table(create_table.get_date(),create_table.get_row()/3+1)
     for i in range(2,create_table.get_row(),3):
            trainToGoogleDoc.write_his_answer(request,create_table.get_date(),create_table.get_range((i/3)+1),create_table.get_username(i),create_table.get_do_today(i),create_table.going_to_do_tommorow(i), create_table.get_anything(i))
-    call_about_results(request,'D63CABG6L')
+    call_about_results(request,secinfo.channel_list[0])
 
 def shedule_write():
     schedule.every().day.at("12:20").do(write_in_form)
