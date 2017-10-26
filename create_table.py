@@ -1,7 +1,7 @@
 import datetime
 import secinfo
 def get_username(number_string):
-    f = open('do_list.txt').readlines()
+    f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/do_list.txt').readlines()
     username = ''
     for i in range(0,9):
         username = username + f[number_string][i]
@@ -18,14 +18,14 @@ def get_do_today(number_string):
     return work_today
 
 def going_to_do_tommorow(number_string):
-    f = open('do_list.txt').readlines()
+    f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/do_list.txt').readlines()
     work_tommorow = ''
     for i in range(10, len(f[number_string-1])):
         work_tommorow = work_tommorow + f[number_string-1][i]
     return work_tommorow
 
 def get_anything(number_string):
-    f = open('do_list.txt').readlines()
+    f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/do_list.txt').readlines()
     work_tommorow = ''
     for i in range(10, len(f[number_string])):
         work_tommorow = work_tommorow + f[number_string][i]
@@ -44,6 +44,6 @@ def get_date():
     return now_date
 
 def get_row():
-    f=open('do_list.txt').readlines()
+    f=open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/do_list.txt').readlines()
     row = len(f)
     return row
