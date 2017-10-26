@@ -158,7 +158,7 @@ def threading_start():
 
 
 def ask_about_work():
-    schedule.every().day.at("10:47").do(threading_start)
+    schedule.every().day.at("11:35").do(threading_start)
 
 
 def clear_dolist():
