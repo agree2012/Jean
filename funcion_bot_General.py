@@ -3,6 +3,7 @@
 from slackclient import SlackClient
 import os
 import secinfo
+import jean_ask
 import jenkins
 from multiprocessing import Process
 import threading
@@ -228,6 +229,14 @@ def eye_on_server():
                     job_Name = site_and_job(job)[1]
                     build_or_nothing(job_Name,site_and_job(job)[0],chan)
                     clear_text()
+def command_change_answer():
+    word1 = 'Rechange my answer'
+    data = open('lol.txt').read()
+    if (word1 in data):
+        chan = define_chan()
+        sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Okay rechange your answer')
+        jean_ask.change_my_answer(chan)
+        clear_text()
 
 
 def command_stop_watching():
@@ -430,5 +439,8 @@ def delete_remind():
                     if 'every' in file2[i]:
                         remind_function.refresh_remind()
                         remind_function.shed_date_final()
+			jean_ask.shedule_write()
+                        jean_ask.clear_dolist()
+                        jean_ask.ask_about_work()
         if (number == 5):
             sc.api_call('chat.postMessage', as_user='true:', channel=chan, text=send)
