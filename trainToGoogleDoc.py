@@ -20,7 +20,6 @@ def create_table(date,row):
                              'title': date,
                              'gridProperties': {'rowCount': row, 'columnCount':4 }}}]
     }).execute()
-    print(spreadsheet)
 
     driveService = apiclient.discovery.build('drive', 'v3', http=httpAuth)
     shareRes = driveService.permissions().create(
