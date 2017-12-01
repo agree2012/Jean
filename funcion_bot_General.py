@@ -83,12 +83,13 @@ def slack_build_job_jenkins(param):
 
 
 def ping_the_server(hostname):
-    response = os.system("ping -c 4 " + hostname)
-    if response == 0:
-        message = 'server is up!'
-    else:
-        message = 'server is down!'
-    return message
+    if not(('@' in hostname) or (';' in hostname) or ('&' in hostname) or ('|' in hostname)):
+    	response = os.system("ping -c 4 " + hostname)
+    	if response == 0:
+        	message = 'server is up!'
+    	else:
+        	message = 'server is down!'
+    	return message
 
 def command(text):
     number = 0
