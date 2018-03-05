@@ -133,7 +133,7 @@ def connect(file):
     if input:
         for action in input:
 	    if 'user' in action:
-                if action['user'] != 'U642G4JGJ':
+                if action['user'] != 'U704DMX8U':
                     if 'type' in action and action['type'] == "message" :
                         username = action['user']
                         report = action['text']
