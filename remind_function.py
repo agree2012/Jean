@@ -17,6 +17,7 @@ from select_date_time import selection_username, selection_eventname, int_date, 
 from onetime_remind import  timer_sched, now_and_need_time
 import everyday_remind
 import verify
+import jean_ask
 
 token = secinfo.API_Token
 sc = SlackClient(token)
@@ -90,7 +91,6 @@ def remind_new():
         else:
             refresh_remind()
             shed_date_final()
-            #sc.api_call('chat.postMessage', as_user='true:', channel=define_chan, text=('Incorrect time'))
 
 def shed_date_final():
     schedule.every(60).seconds.do(remind_new)

@@ -4,19 +4,12 @@ from slackclient import SlackClient
 import os
 import secinfo
 import jenkins
-from multiprocessing import Process
-import threading
-import schedule
 from datetime import datetime, date, time
-import cgi, re
-import time
+import  re
 import datetime
-import ast
-import sys
 import sched, time
 import remind_function
 import funcion_bot_General
-import select_date_time
 from select_date_time import weekday_today
 from onetime_remind import count_day
 import verify
@@ -26,11 +19,19 @@ token = secinfo.API_Token
 sc = SlackClient(token)
 s = sched.scheduler(time.time, time.sleep)
 
+def define_username():
+    string = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
+    if string != '':
+        username = ''
+        for i in range(9,18):
+            username = username + string[i]
+        return username
+
 def define_chan():
-    chan_string = open('lol.txt').read()
+    chan_string = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
     if chan_string != '':
         chan = ''
-        for i in range(0,9):
+        for i in range(0, 9):
             chan = chan + chan_string[i]
         return chan
 
@@ -82,12 +83,14 @@ def slack_build_job_jenkins(param):
 
 
 def ping_the_server(hostname):
-    response = os.system("ping -c 4 " + hostname)
-    if response == 0:
-        message = 'server is up!'
-    else:
-        message = 'server is down!'
-    return message
+    if not(('@' in hostname) or (';' in hostname) or ('&' in hostname) or ('|' in hostname)):
+        response = os.system("ping " + hostname)
+        if response == 0:
+            message = 'server is up!'
+        else:
+           message = 'server is down!'
+        return message
+
 
 def command(text):
     number = 0
@@ -130,7 +133,7 @@ def connect(file):
     if input:
         for action in input:
 	    if 'user' in action:
-                if action['user'] != 'U704DMX8U':
+                if action['user'] != 'U642G4JGJ':
                     if 'type' in action and action['type'] == "message" :
                         username = action['user']
                         report = action['text']
@@ -140,26 +143,26 @@ def connect(file):
                             report = report.replace('@me','<@'+ username + '>')
                         if ('@all' in report):
                             report = report.replace('@all','<!@channel>')
-                        f.write(report + '\n')
-                        #f.write(report.encode('utf-8') + '\n')
+                        #f.write(report + '\n')
+                        f.write(report.encode('utf-8') + '\n')
                         f.close
                         return report
 
 def clear_text():
-        f=open('lol.txt', 'w')
+        f=open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt', 'w')
         f.close()
 
 def command_hello():
     word1 = 'hello jean'
     word2 = 'hi jean'
-    data = open('lol.txt').read()
+    data = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
     if (word1 in data) or (word2 in data) :
         sc.api_call('chat.postMessage', as_user='true:', channel=define_chan(), text='Hello')
         clear_text()
 
 def command_help():
     word = 'jean help'
-    data = open('lol.txt').read()
+    data = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
     if word in data:
         sc.api_call('chat.postMessage', as_user='true:', channel=define_chan(), \
         text='Use: `Jean, what about status @Projectname` if you want to check status of project. \n\
@@ -168,6 +171,13 @@ Use: `Jean, build please @Projectname` if you want to build project. \n\
 Example: `Jean, build please @DevopsTest/online-shopJSFinal`       \n\
 Use: `Jean, remind/stop_remind @name/me about "event" at time date or day of week` if you want to remind something.\n\
 Example: `Jean, remind @me about "Call" at 17:00 tommorow`\n\
+Use `Jean, can you please conduct a survey at TIME every DAY OR DAY OF WEEK. Questions is 1) Question? 2) Question? And please ignore: username`\n\
+Examle `Jean, can you please conduct a survey at 7:08 every day. Questions is 1) What you doing now? 2) Do you have tasks? And please ignore @mike` \n\
+Use `Jean can you please rechange my request a survey at TIME every DAY OR DAY OF WEEK. Questions is 1) Question? 2) Question?`\n\
+Example `Jean change my request a survey at 15:57 every day. Questions is 1) What you doing now? 2) Do you have tasks?`\n\
+Use `show survey` if you want watch list of survey\n\
+Use `Jean delete request: a survey at at TIME every DAY OR DAY OF WEEK. Questions is 1) Question? 2) Question?`\n\
+Example: `Jean delete request: a survey at 10:49 every day.  Questions is 1) What you doing now? 2) Do you have tasks? 3) What task will be next? 4) Lolaqq?`\n\
 Use: `Jean, watching to @ip_addr it is Name_Project` if you want to watching on server. \n\
 Example `Jean, watching to @google.com it is DevopsTest/online-shopJSFinal`')
         clear_text()
@@ -175,7 +185,7 @@ Example `Jean, watching to @google.com it is DevopsTest/online-shopJSFinal`')
 def status_project():
     text = ''
     chan = define_chan()
-    file1 = open('lol.txt').readlines()
+    file1 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
     for i in range(0,len(file1)):
         if 'what about' in file1[i]:
             text = file1[i]
@@ -186,7 +196,7 @@ def status_project():
             sc.api_call('chat.postMessage', as_user='true:', channel=chan, text= report)
 
 def build_project():
-    file1 = open('lol.txt').readlines()
+    file1 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
     text = ''
     chan = define_chan()
     for i in range(0,len(file1)):
@@ -204,7 +214,7 @@ def eye_on_server():
     text = ''
     chan = define_chan()
     param = 0
-    file1 = open('lol.txt').readlines()
+    file1 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
     for i in range(0,len(file1)):
         if 'watching to' in file1[i]:
             text = file1[i]
@@ -216,7 +226,7 @@ def eye_on_server():
                 sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Ok, i will keep an eye on it')
                 while(ping_the_server(site_and_job(job)[0]) != 'server is down!'):
                     for i in range(0,600):
-                        file2 = open('stop.txt').read()
+                        file2 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/stop.txt').read()
                         if(file2 != ''):
                             if 'stop it' in file2:
                                 sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Ok, i end watching on server')
@@ -229,11 +239,20 @@ def eye_on_server():
                     build_or_nothing(job_Name,site_and_job(job)[0],chan)
                     clear_text()
 
+#def command_change_answer():
+    #word1 = 'Rechange my answer'
+    #data = open('lol.txt').read()
+    #if (word1 in data):
+        #chan = define_chan()
+      #  sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Okay rechange your answer')
+      #  jean_ask.change_my_answer(chan)
+       # clear_text()
+
 
 def command_stop_watching():
     number = 0
-    data = open('lol.txt').read()
-    file_stop = open('stop.txt', 'w')
+    data = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
+    file_stop = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/stop.txt', 'w')
     if(data != ''):
         if 'stop watching' in data:
             text = 'stop it'
@@ -248,7 +267,7 @@ def build_or_nothing(job, server,chan):
 
 def command_yes(job,chan):
     number = 0
-    data = open('lol.txt').read()
+    data = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
     if(data != ''):
         if 'yes' in data:
             sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Build is started')
@@ -327,7 +346,7 @@ def find_quotes(file_text):
 def list_of_reminds():
     text = ''
     chan = define_chan()
-    file1 = open('lol.txt').readlines()
+    file1 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
     for i in range(0,len(file1)):
         if 'jean list' in file1[i]:
             text = file1[i]
@@ -344,14 +363,14 @@ def write_remindlist():
     job = ''
     chan = define_chan()
     file3 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').read()
-    file1 = open('lol.txt').readlines()
+    file1 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
     file2 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt','a')
     for i in range(0,len(file1)):
         try :
             if ' remind' in file1[i]:
                 text = file1[i]
                 job = funcion_bot_General.job(text)
-		number_start = job.find('at') + 3
+                number_start = job.find('at') + 3
                 number_end = len(job)
                 noformat_job = job[0:number_start]
                 format_job = job[number_start:number_end]
@@ -370,7 +389,7 @@ def write_remindlist():
                         job = noformat_job+format_job
                     if 'a.m.' in job:
                         job = job.replace('a.m.', '')
-		    job = '@' + job
+                        job = '@' + job
                 else:
                     format_job = format_date(format_job)
                     job = '@' + noformat_job+format_job
@@ -401,7 +420,7 @@ def delete_remind():
     send = 'Sorry, i don`t remind you at that time'
     job = ''
     chan = define_chan()
-    file1 = open('lol.txt').readlines()
+    file1 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
     file2 = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/remindlist.txt').readlines()
     clear_text()
     for i in range(0,len(file1)):
