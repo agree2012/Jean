@@ -58,9 +58,9 @@ def write_user_list(url):
     r = requests.get(url)
     f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/list_and_channel.json','a')
     text = f.writelines(r.text.encode('cp1251'))
-    text = open('list_and_channel.txt').read()
+    text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/list_and_channel.txt').read()
     text = text.replace('{', '\n')
-    textwrite = open('list_and_channel.txt', 'w')
+    textwrite = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/list_and_channel.txt', 'w')
     textwrite = textwrite.writelines(text)
 
 def write_in_json(url):
