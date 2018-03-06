@@ -101,7 +101,6 @@ def user_count():
     f = open('list_and_channel.txt').readlines()
     return (len(f))
 
-get_channals('bot_jean','https://testjenkinsslack.slack.com')
 
 def user_channals_info():
     #write_in_json('https://testjenkinsslack.slack.com')
@@ -110,7 +109,7 @@ def user_channals_info():
     #userlist = json.loads(s)
     #count_users(userlist)
     #format_text()
-    get_channals('bot_jean','https://testjenkinsslack.slack.com')
+    get_channals('jean_dev','https://indasoft-hand-write.slack.com')
 
 def get_users(i):
     f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/list_and_channel.txt').readlines()
