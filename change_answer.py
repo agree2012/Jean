@@ -47,7 +47,7 @@ def change_request():
     while(num == 1):
         num = 2
     while(num == 2):
-        new_message = open('lol.txt').read()
+        new_message = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
         if ('rechange' in new_message) and (chan == funcion_bot_General.define_chan()) :
             info = new_command_create_request.survevy_info(new_message)
             if(new_command_create_request.questions_list(info[2]) != 0):
