@@ -53,7 +53,7 @@ def delete_user_ask(chan):
     for i in range(0,len(fr)):
         if chan in fr[i]:
             fr[i] =''
-            fw = open('do_list.txt','w')
+            fw = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/do_list.txt','w')
             fw = fw.writelines(fr)
 
 
@@ -133,7 +133,7 @@ def ask_requsests(count_question,list_question,i):
         if ('Yes i ready' in text) and (chan in all_channels):
             username = '@' + new_ask.change_channel_id(define_chan())
             if ((user_ignore(username,i)) == 0):
-                f=open('lol.txt','w')
+                f=open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt','w')
                 f.close()
                 t4 = threading.Thread(target = ask_all_about_all_quetstion, args = (chan, count_question, list_question,i,))
                 t4.start()
