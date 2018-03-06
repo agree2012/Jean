@@ -53,7 +53,7 @@ def get_row():
 
 def get_spreadsheetId(i):
     spreadsheetId = ''
-    f = open('ask.txt').readlines()
+    f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
     for j in range(21,65):
         spreadsheetId = spreadsheetId + f[i][j]
     return spreadsheetId
