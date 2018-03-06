@@ -24,7 +24,7 @@ def going_to_do_tommorow(number_string):
     return work_tommorow
 
 def get_anything(number_string):
-    f = open('do_list.txt').readlines()
+    f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/do_list.txt').readlines()
     work_tommorow = ''
     for i in range(10, len(f[number_string])):
         work_tommorow = work_tommorow + f[number_string][i]
