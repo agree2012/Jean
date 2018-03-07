@@ -219,7 +219,7 @@ def get_channel_request(i):
     f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
     if (len(f) != 0):
         text = f[i]
-        return text[91:99]
+        return text[90:99]
 
 def get_time_now():
     time_now = str(datetime.datetime.now().time())
