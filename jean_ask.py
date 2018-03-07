@@ -252,7 +252,7 @@ def get_start_question_ask(i):
             if ignore[j] =='@' + get_username_all(k):
                 num = 0
         if(num != 0):
-            sc.api_call('chat.postMessage', as_user='true:', channel=get_channel(k), text='Are you ready to answer on a few question?')
+            sc.api_call('chat.postMessage', as_user='true:', channel=get_channel(k), text='Are you ready to answer on a few question? Use `Yes i ready` when will be ready.')
 
 
 
