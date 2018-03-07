@@ -37,7 +37,7 @@ def define_chan():
 
 def check_status_project(param):
     try:
-      server = jenkins.Jenkins('http://jenkins.andersenlab.com', username=secinfo.username, password=secinfo.passowrd)
+      server = jenkins.Jenkins('http://jenkins.andersenlab.com', username=secinfo.username, password=secinfo.password)
       next_build_number = server.get_job_info(param)['nextBuildNumber']
       build_number = next_build_number - 1
       build_info = server.get_build_info(param, build_number)
@@ -54,7 +54,7 @@ def check_status_project(param):
 
 def slack_status_build_job(param):
     try:
-        server = jenkins.Jenkins('http://jenkins.andersenlab.com', username=secinfo.username, password=secinfo.passowrd)
+        server = jenkins.Jenkins('http://jenkins.andersenlab.com', username=secinfo.username, password=secinfo.password)
         next_build_number = server.get_job_info(param)['nextBuildNumber']
         build_number = next_build_number - 1
         build_info = server.get_build_info(param, build_number)
@@ -66,7 +66,7 @@ def slack_status_build_job(param):
 
 def slack_build_job_jenkins(param):
     try:
-        server = jenkins.Jenkins('http://jenkins.andersenlab.com', username=secinfo.username, password=secinfo.passowrd)
+        server = jenkins.Jenkins('http://jenkins.andersenlab.com', username=secinfo.username, password=secinfo.password)
         next_build_number = server.get_job_info(param)['nextBuildNumber']
         build_number = next_build_number - 1
         if(check_status_project(param) != 'In process, wait the end of build'):
