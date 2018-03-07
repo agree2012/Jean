@@ -3,7 +3,7 @@ import apiclient.discovery
 from oauth2client.service_account import ServiceAccountCredentials
 
 
-CREDENTIALS_FILE = ''/var/lib/jenkins/workspace/DevopsTest/Jean_bot/TestGoogleDoSlack-b47c81f96c6e.json'
+CREDENTIALS_FILE = '/var/lib/jenkins/workspace/DevopsTest/Jean_bot/TestGoogleDoSlack-b47c81f96c6e.json'
 credentials = ServiceAccountCredentials.from_json_keyfile_name(CREDENTIALS_FILE, ['https://www.googleapis.com/auth/spreadsheets',                                                                                  'https://www.googleapis.com/auth/drive'])
 httpAuth = credentials.authorize(httplib2.Http())
 service = apiclient.discovery.build('sheets', 'v4', http = httpAuth)
