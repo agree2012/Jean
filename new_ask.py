@@ -28,7 +28,8 @@ def user_from_channels(botchannel,url):
     start_members = text_start.rfind('members":["')
     all_members = new_text[start_members:num_stop]
     start_members = all_members.find(':[') + 2
-    all_members = all_members[start_members:len(all_members)]
+    stop_members = all_members.find("topic") -2
+    all_members = all_members[start_members:stop_members]
     for i in range(0,len(all_members)):
         if all_members[i] == ',':
             number = number + 1
@@ -87,10 +88,9 @@ def count_users(userlist):
 
 def format_text():
     f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/list_and_channel.txt').read()
-    f = f.replace('1:',' 1:')
     f = f.replace(',','\n')
     f = f.replace('}','')
-    f = f.replace('{','')
+    f = f.replace('{',' ')
     fw = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/list_and_channel.txt','w')
     fw.write(f)
 
