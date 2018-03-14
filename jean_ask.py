@@ -308,7 +308,7 @@ def start_all_event():
 def get_channel(j):
     f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/list_and_channel.txt').readlines()
     channel = ''
-    for i in range(15,24):
+    for i in range(12,21):
         channel = channel + f[j][i]
     return channel
 
