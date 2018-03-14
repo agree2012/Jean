@@ -239,7 +239,7 @@ def create_sheet():
 def get_username_all(j):
     f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/list_and_channel.txt').readlines()
     username = ''
-    for i in range(5,14):
+    for i in range(2,11):
         username = username + f[j][i]
     return username
 
