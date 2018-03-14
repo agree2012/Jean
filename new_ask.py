@@ -23,7 +23,7 @@ def user_from_channels(botchannel,url):
     r = requests.get(url)
     new_text = r.text
     num_start = new_text.find(botchannel)
-    num_stop = new_text[num_start:len(new_text)].find('}') + 2
+    num_stop = new_text[num_start:len(new_text)].find('}') + 2 + num_start
     text_start = new_text[num_start:num_stop]
     start_members = text_start.rfind('members":["')
     all_members = new_text[start_members:num_stop]
@@ -38,10 +38,11 @@ def user_from_channels(botchannel,url):
 
 def new_format():
     f = open('list_and_channel.txt').readlines()
-    for i in range(0,len(f)):
-        f[i]=f[i][3:len(f[i])]
-        if f[i][0] == ':':
-            f[i]=f[i][1:len(f[i])]
+    if len(f) > 0:
+        for i in range(0,len(f)):
+            f[i]=f[i][3:len(f[i])]
+            if f[i][0] == ':':
+                f[i]=f[i][1:len(f[i])]
         fw = open('list_and_channel.txt','w')
         fw.writelines(f)
         
