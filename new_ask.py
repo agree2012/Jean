@@ -36,7 +36,15 @@ def user_from_channels(botchannel,url):
     users = all_user_list(all_members)
     return users
 
-
+def new_format():
+    f = open('list_and_channel.txt').readlines()
+    for i in range(0,len(f)):
+        f[i]=f[i][3:len(f[i])]
+        if f[i][0] == ':':
+            f[i]=f[i][1:len(f[i])]
+        fw = open('list_and_channel.txt','w')
+        fw.writelines(f)
+        
 def get_channals(botchannel,url):
     string = user_from_channels(botchannel, url)
     text = {}
@@ -52,6 +60,7 @@ def get_channals(botchannel,url):
     f.write(str(text))
     f.close()
     format_text()
+    new_format()
 
 
 def write_user_list(url):
