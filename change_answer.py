@@ -38,7 +38,7 @@ def change_request():
                 oldpart = all_strings(i)
         if oldpart != '':
             sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Write new request.\n\
-    Use `jean rechange to YOUR REQUEST')
+    Use `jean rechange to YOUR REQUEST`')
             num = 1
         else :
             sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='So request isn`t found')
