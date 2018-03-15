@@ -286,15 +286,15 @@ def start_all_event():
         day_of_week = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
         for i in range(0,len(f)):
             if(' day' in f[i]):
-                if (get_time_now()[0] == get_time_requets(i)[0]) and (get_time_now()[1] == get_time_requets(i)[1]) and (get_time_now()[2] == 0):
+                if (get_time_now()[0] == get_time_requets(i)[0]-1) and (get_time_now()[1] == get_time_requets(i)[1]) and (get_time_now()[2] == 0):
                     new_command_create_request.new_sheet(i)
                     data = str(new_command_create_request.get_date()) + ' ' + str(get_time_requets(i)[0]) + str(get_time_requets(i)[1])
                     new_command_create_request.list_question(i,data)
                     get_start_question_ask(i)
                     clear_dolist()
-                if(get_time_now()[0] == get_time_requets(i)[0]) and (get_time_now()[1] >= get_time_requets(i)[1]):
+                if(get_time_now()[0] == get_time_requets(i)[0]-1) and (get_time_now()[1] >= get_time_requets(i)[1]):
                     ask_requsests(len(new_command_create_request.question_list_again(i)),new_command_create_request.question_list_again(i),i)
-                if(((get_time_now()[0] == (get_time_requets(i)[0]))) and (get_time_now()[1] == 59) and (get_time_now()[2] == 50)):
+                if(((get_time_now()[0] == (get_time_requets(i)[0]-1))) and (get_time_now()[1] == 59) and (get_time_now()[2] == 50)):
                     pagenumber = write_in_form(i)
                     clear_dolist()
                     sc.api_call('chat.postMessage', as_user='true:', channel=get_channel_request(i),text='Result of ask there: https://docs.google.com/spreadsheets/d/' + str(new_command_create_request.get_spreadsheetId(i)) + '/edit#gid='+str(pagenumber))
