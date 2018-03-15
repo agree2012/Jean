@@ -273,7 +273,7 @@ def day_of_week_today(num,i):
             sc.api_call('chat.postMessage', as_user='true:', channel=get_channel_request(i),
                         text="Incorrect question structure")
             delete_uncorrect_request(i)
-    if(num == num_today) and  (get_time_now()[0] == get_time_requets(i)[0] + 1) and (get_time_now()[1] == 0) and (get_time_now()[2] == 0):
+    if(num == num_today) and  (get_time_now()[0] == get_time_requets(i)[0]) and (get_time_now()[1] == 59) and (get_time_now()[2] == 40):
         pagenumber =  write_in_form(i)
         clear_dolist()
         sc.api_call('chat.postMessage', as_user='true:', channel=get_channel_request(i),text = 'Result of ask there: https://docs.google.com/spreadsheets/d/' + str(new_command_create_request.get_spreadsheetId(i)) + '/edit#gid=' + str(pagenumber))
@@ -294,7 +294,7 @@ def start_all_event():
                     clear_dolist()
                 if(get_time_now()[0] == get_time_requets(i)[0]) and (get_time_now()[1] >= get_time_requets(i)[1]):
                     ask_requsests(len(new_command_create_request.question_list_again(i)),new_command_create_request.question_list_again(i),i)
-                if(((get_time_now()[0] == (get_time_requets(i)[0] + 1))) and (get_time_now()[1] == 59) and (get_time_now()[2] == 50)):
+                if(((get_time_now()[0] == (get_time_requets(i)[0]))) and (get_time_now()[1] == 59) and (get_time_now()[2] == 50)):
                     pagenumber = write_in_form(i)
                     clear_dolist()
                     sc.api_call('chat.postMessage', as_user='true:', channel=get_channel_request(i),text='Result of ask there: https://docs.google.com/spreadsheets/d/' + str(new_command_create_request.get_spreadsheetId(i)) + '/edit#gid='+str(pagenumber))
