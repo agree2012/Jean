@@ -173,11 +173,11 @@ Use: `Jean, remind/stop_remind @name/me about "event" at time date or day of wee
 Example: `Jean, remind @me about "Call" at 17:00 tommorow`\n\
 Use `Jean, can you please conduct a survey at TIME every DAY OR DAY OF WEEK. Questions are 1) Question? 2) Question? And please ignore: username`\n\
 Examle `Jean, can you please conduct a survey at 7:08 every day. Questions are 1) What you doing now? 2) Do you have tasks? And please ignore @mike` \n\
-Use `Jean can you please rechange my request a survey at TIME every DAY OR DAY OF WEEK. Questions are 1) Question? 2) Question?`\n\
-Example `Jean change my request a survey at 15:57 every day. Questions are 1) What you doing now? 2) Do you have tasks?`\n\
+Use `Jean change my survey: Numberline which you want change` Use jean show survey if you want see list of survey \n\
+Example `Jean change my survey: 1`\n\
 Use `show survey` if you want watch list of survey\n\
-Use `Jean delete request: a survey at at TIME every DAY OR DAY OF WEEK. Questions are 1) Question? 2) Question?`\n\
-Example: `Jean delete request: a survey at 10:49 every day.  Questions are 1) What you doing now? 2) Do you have tasks? 3) What task will be next? 4) Lolaqq?`\n\
+Use `Jean delete survey: number_string_which_you_want_delete` Use jean show survey if you want see list of survey \n\
+Example: `Jean delete survey: 3` \n\
 Use: `Jean, watching to @ip_addr it is Name_Project` if you want to watching on server. \n\
 Example `Jean, watching to @google.com it is DevopsTest/online-shopJSFinal`')
         clear_text()
