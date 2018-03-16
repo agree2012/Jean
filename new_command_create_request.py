@@ -133,12 +133,13 @@ def create_survevy():
                             number = 1
                             return number
                         if(int(two_parts_time(info[0])[0]) == jean_ask.get_time_requets(i)[0]):
-                            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text="Sorry but this time already busy!")
-                            number = 1
-                            return number
+                            if(info[1] in f[i]) or ('every day' in info[1]) or ('every day' in f[i]):
+                                sc.api_call('chat.postMessage', as_user='true:', channel=chan, text="Sorry but this time already busy!")
+                                number = 1
+                                return number
                     if(number != 1):
                         textwrite = info[0]+' '+info[1]+' '+info[2]+' '+ info[3]+' '
-                        response = trainToGoogleDoc.create_table(get_date(),count_row,count_column)
+                        response = trainToGoogleDoc.create_table(get_date(),int(count_row),int(count_column))
                         spreadsheetId = response['spreadsheetId']
                         add_username_field(spreadsheetId,create_table_for_parse.get_date())
                         if(questions_list(info[2]) != 0):
@@ -154,6 +155,7 @@ def create_survevy():
         except ValueError :
             sc.api_call('chat.postMessage', as_user='true:', channel=chan,
                     text="Sorry but parameter(s) request is't correct")
+
 
 
 def add_username_field(spreadsheet,date):
