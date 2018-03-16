@@ -30,7 +30,7 @@ while(1) :
     #t3.start()
     jean_ask.start_all_event()
     #jean_ask.create_sheet()
-    jean_ask.delete_askquestion()
+    jean_ask.delete_survey()
   #  jean_ask.change_string()
     #t3 = threading.Thread(target = jean_ask.get_count_string_change)
     #t3.start()
