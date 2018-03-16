@@ -26,33 +26,38 @@ def change_request():
     message = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
     num = 0
     oldpart = ''
-    if "change my request" in message:
+    if "change my request:" in message:
         text = message
         chan = funcion_bot_General.define_chan()
         fl = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
-        info = new_command_create_request.survevy_info(text)
-        for i in range(0, len(fl)):
-            if ((info[0] in fl[i]) and (info[1] in fl[i]) and (info[2] in fl[i]) and (info[3] in fl[i])):
-                sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Send the new request please')
-                message = request(text)
-                oldpart = all_strings(i)
-        if oldpart != '':
-            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Write new request.\n\
-    Use `jean rechange to YOUR REQUEST`')
-            num = 1
-        else :
+        ask_len = len(fl)
+        num = message.find("request:") + 8
+        num_rechange = text[num:len(message)]
+        try:
+            if((int(num_rechange)-1) > 0) or ((int(num_rechange)-1) <= ask_len):
+                oldpart = all_strings(int(num_rechange)-1)
+                fl[int(num_rechange)-1] = ''
+                fr = open('ask.txt','w')
+                fr.writelines(fl)
+            if oldpart != '':
+                sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Write new request.\n\
+    Use `jean rechange to a survey` + YOUR REQUEST')
+                num = 1
+            else :
+                sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='So request isn`t found')
+                num = 3
+        except ValueError:
             sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='So request isn`t found')
-            num = 3
         funcion_bot_General.clear_text()
     while(num == 1):
         num = 2
     while(num == 2):
-        new_message = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
+        new_message = open('lol.txt').read()
         if ('rechange' in new_message) and (chan == funcion_bot_General.define_chan()) :
             info = new_command_create_request.survevy_info(new_message)
             if(new_command_create_request.questions_list(info[2]) != 0):
                 textwrite = oldpart + chan + info[0] + ' ' + info[1] + info[2] + info[3] + '\n'
-                f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt', 'a')
+                f = open('ask.txt', 'a')
                 f.write(str(textwrite))
                 num = 3
                 sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='I change it')
