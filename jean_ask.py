@@ -354,6 +354,6 @@ def list_of_survey():
         survey = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
         if(len(survey) > 0):
             for i in range(0,len(survey)):
-                sc.api_call('chat.postMessage', as_user='true:', channel=chan,text=str(i+1) + ' at '+ str(survey[i][99:len(survey[i])]))
+                sc.api_call('chat.postMessage', as_user='true:', channel=chan,text=str(i+1) + ': at '+ str(survey[i][99:len(survey[i])]))
         else:
             sc.api_call('chat.postMessage', as_user='true:', channel=chan,text='List is empty')
