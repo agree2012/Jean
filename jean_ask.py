@@ -317,29 +317,34 @@ def what_text(text):
     text = text[num:len(text)]
     return text
 
-def delete_askquestion():
-    f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
-    num = 0
-    stop_sc = 0
-    if('Jean delete request:' in f) :
-        text = what_text(f)
-        chan = define_chan()
-        info = new_command_create_request.survevy_info(text)
-        funcion_bot_General.clear_text()
-        fl = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
-        for i in range(0,len(fl)):
-            if ((info[0] in fl[i]) and (info[1] in fl[i]) and (info[2] in fl[i])):
-                fl[i] = ''
-                num = 1
-            fw = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt','w')
-            fw.writelines(fl)
-            stop_sc = 1
-        if stop_sc == 1 :
-            sc.api_call('chat.postMessage', as_user='true:', channel=chan,
-                            text='Ok i delete it')
-        if num != 1:
-            sc.api_call('chat.postMessage', as_user='true:', channel=chan,
-                         text= 'Incorrect paramaner')
+def delete_survey():
+    f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').readlines()
+    for i in range(0,len(f)):
+        if('Jean delete survey:' in f[i]):
+            chan = define_chan()
+            num_start = f[i].find('Jean delete survey:') + 19
+            text = f[i][num_start:len(f[i])]
+            funcion_bot_General.clear_text()
+            try:
+                ask_list =open('ask.txt').readlines()
+                if(int(text) > len(ask_list)):
+                    sc.api_call('chat.postMessage', as_user='true:', channel=chan,
+                        text='Sorry but i can`t find this survey, maybe number line is incorrect')
+                else:
+                    num = int(text) - 1
+                    if(num >= 0):
+                        ask_list[num] = ''
+                        fw = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt','w')
+                        fw.writelines(ask_list)
+                        sc.api_call('chat.postMessage', as_user='true:', channel=chan,
+                                text='Okay i delete it')
+                    else:
+                        sc.api_call('chat.postMessage', as_user='true:', channel=chan,
+                        text='Sorry but i can`t find this survey, maybe number line is incorrect')
+            except ValueError:
+                sc.api_call('chat.postMessage', as_user='true:', channel=chan,
+                            text='Incorrect number of string')
+
 
 def list_of_survey():
     text = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
@@ -347,5 +352,8 @@ def list_of_survey():
         chan = define_chan()
         funcion_bot_General.clear_text()
         survey = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
-        for i in range(0,len(survey)):
-            sc.api_call('chat.postMessage', as_user='true:', channel=chan,text='at '+ str(survey[i][99:len(survey[i])]))
+        if(len(survey) > 0):
+            for i in range(0,len(survey)):
+                sc.api_call('chat.postMessage', as_user='true:', channel=chan,text=str(i+1) + ' at '+ str(survey[i][99:len(survey[i])]))
+        else:
+            sc.api_call('chat.postMessage', as_user='true:', channel=chan,text='List is empty')
