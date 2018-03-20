@@ -27,7 +27,7 @@ def change_request():
     num = 0
     number = 0
     oldpart = ''
-    if "change my request:" in message:
+    if "change my survey:" in message:
         text = message
         chan = funcion_bot_General.define_chan()
         fl = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
@@ -43,7 +43,7 @@ def change_request():
                 fr.close()
             if oldpart != '':
                 sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Write new request.\n\
-    Use `jean rechange to a survey` + YOUR REQUEST')
+    Use `jean change to a survey` + YOUR REQUEST')
                 num = 1
             else :
                 sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='So request isn`t found')
