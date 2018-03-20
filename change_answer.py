@@ -56,7 +56,7 @@ def change_request():
     while(num == 2):
         number = 0
         new_message = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
-        if ('rechange' in new_message) and (chan == funcion_bot_General.define_chan()):
+        if ('change' in new_message) and (chan == funcion_bot_General.define_chan()):
             info = new_command_create_request.survevy_info(new_message)
             textwrite = oldpart + chan + info[0] + ' ' + info[1] + info[2] + info[3] + '\n'
             for i in range(0,len(fl)):
