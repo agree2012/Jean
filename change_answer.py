@@ -2,6 +2,7 @@ import secinfo
 import funcion_bot_General
 from slackclient import SlackClient
 import new_command_create_request
+import jean_ask
 token = secinfo.API_Token
 sc = SlackClient(token)
 
