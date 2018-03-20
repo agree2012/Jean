@@ -15,7 +15,7 @@ def survevy_info(text):
     day = ''
     question = ''
     ignore = ''
-    start = text.find('survey at') + 9
+    start = text.find(' at') + 3
     every_start = text.find('every')
     every_stop = text.find('uestion')
     start_please_ignore = (text.rfind('?') + 2)
