@@ -25,8 +25,9 @@ def all_strings(i):
 def change_request():
     message = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
     num = 0
+    number = 0
     oldpart = ''
-    if "change my survey:" in message:
+    if "change my request:" in message:
         text = message
         chan = funcion_bot_General.define_chan()
         fl = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
@@ -39,9 +40,10 @@ def change_request():
                 fl[int(num_rechange)-1] = ''
                 fr = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt','w')
                 fr.writelines(fl)
+                fr.close()
             if oldpart != '':
                 sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Write new request.\n\
-    Use `jean change to a survey` + YOUR REQUEST')
+    Use `jean rechange to a survey` + YOUR REQUEST')
                 num = 1
             else :
                 sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='So request isn`t found')
@@ -52,15 +54,20 @@ def change_request():
     while(num == 1):
         num = 2
     while(num == 2):
+        number = 0
         new_message = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/lol.txt').read()
-        if ('rechange' in new_message) and (chan == funcion_bot_General.define_chan()) :
+        if ('rechange' in new_message) and (chan == funcion_bot_General.define_chan()):
             info = new_command_create_request.survevy_info(new_message)
-            if(new_command_create_request.questions_list(info[2]) != 0):
-                textwrite = oldpart + chan + info[0] + ' ' + info[1] + info[2] + info[3] + '\n'
-                f = open('ask.txt', 'a')
+            textwrite = oldpart + chan + info[0] + ' ' + info[1] + info[2] + info[3] + '\n'
+            for i in range(0,len(fl)):
+                if(len(fl[i]) > 2):
+                    if int(new_command_create_request.two_parts_time(info[0])[0]) == jean_ask.get_time_requets(i)[0]:
+                        if (info[1] in fl[i]) or ('every day' in info[1]) or ('every day' in fl[i]):
+                            sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Time is busy!')
+                            number = 3
+            if (number != 3):
+                f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt', 'a')
                 f.write(str(textwrite))
                 num = 3
                 sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='I change it')
                 funcion_bot_General.clear_text()
-            else:
-                sc.api_call('chat.postMessage', as_user='true:', channel=chan, text='Sorry but you wrote incorrect parameters')
