@@ -32,7 +32,7 @@ def change_request():
         chan = funcion_bot_General.define_chan()
         fl = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
         ask_len = len(fl)
-        num = message.find("request:") + 8
+        num = message.find("survey:") + 7
         num_rechange = text[num:len(message)]
         try:
             if((int(num_rechange)-1) > 0) or ((int(num_rechange)-1) <= ask_len):
