@@ -209,11 +209,19 @@ def get_time_requets(i):
                 if(hour_minutes[0] < 60):
                     return hour_minutes
                 else :
+                    chan = get_channel_request(i)
+                    sc.api_call('chat.postMessage', as_user='true:', channel=chan,
+                                text='Your survey was incorrect. I delete it.')
                     delete_uncorrect_request(i)
             else :
-                delete_uncorrect_request(i)
-    except IndexError:
-        pass
+               delete_uncorrect_request(i)
+        except IndexError:
+            pass
+        except ValueError:
+            chan = get_channel_request(i)
+            sc.api_call('chat.postMessage', as_user='true:', channel=chan,
+                    text='Your survey:'+' at '+ str(f[i][99:len(f[i])]) + 'was incorrect. I delete it.')
+        delete_uncorrect_request(i)
 
 def get_channel_request(i):
     f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
