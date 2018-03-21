@@ -17,8 +17,9 @@ def new_request(string):
 def all_strings(i):
     return_string = ''
     f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
-    return_string = f[i][0:90]
-    f[i] = ''
+    if len(f[i]) > 0:
+        return_string = f[i][0:90]
+        f[i] = ''
     fw = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt','w')
     fw.writelines(f)
     return return_string
