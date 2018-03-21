@@ -196,7 +196,7 @@ def ask_all_about_all_quetstion(chan,count_question, list_question,i):
 
 def get_time_requets(i):
     try:
-        f = open('ask.txt').readlines()
+        f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot.ask.txt').readlines()
         if(len(f) != 0):
             text = f[i]
             hour_minutes = {}
