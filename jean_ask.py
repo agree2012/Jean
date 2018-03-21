@@ -196,7 +196,7 @@ def ask_all_about_all_quetstion(chan,count_question, list_question,i):
 
 def get_time_requets(i):
     try:
-        f = open('/var/lib/jenkins/workspace/DevopsTest/Jean_bot/ask.txt').readlines()
+        f = open('ask.txt').readlines()
         if(len(f) != 0):
             text = f[i]
             hour_minutes = {}
@@ -206,7 +206,7 @@ def get_time_requets(i):
             hour_minutes[0] = int(text[0:text.find(':')])
             hour_minutes[1] = int(text[text.find(':')+1:len(text)])
             if(hour_minutes[0] < 25):
-                if(hour_minutes[0] < 60):
+                if(hour_minutes[1] < 60):
                     return hour_minutes
                 else :
                     chan = get_channel_request(i)
@@ -214,12 +214,12 @@ def get_time_requets(i):
                                 text='Your survey was incorrect. I delete it.')
                     delete_uncorrect_request(i)
             else :
-               delete_uncorrect_request(i)
-        except IndexError:
-            pass
-        except ValueError:
-            chan = get_channel_request(i)
-            sc.api_call('chat.postMessage', as_user='true:', channel=chan,
+                delete_uncorrect_request(i)
+    except IndexError:
+        pass
+    except ValueError:
+        chan = get_channel_request(i)
+        sc.api_call('chat.postMessage', as_user='true:', channel=chan,
                     text='Your survey:'+' at '+ str(f[i][99:len(f[i])]) + 'was incorrect. I delete it.')
         delete_uncorrect_request(i)
 
